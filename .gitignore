@@ -2,6 +2,7 @@
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
+!**/ConversorDeMonedasAlura.iml/
 
 ### Eclipse ###
 .apt_generated
