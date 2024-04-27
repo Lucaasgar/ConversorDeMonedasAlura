@@ -13,7 +13,6 @@ public class Menus {
     public void imprimirMenu(){
         System.out.println("********************************");
         this.monedas();
-        System.out.println("7) Salir");
-        System.out.println("\n********************************");
+
     }
 }

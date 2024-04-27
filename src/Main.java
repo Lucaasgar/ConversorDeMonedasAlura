@@ -13,13 +13,28 @@ public class Main {
         IdDeMoneda buscarId = new IdDeMoneda();
         Scanner entrada = new Scanner(System.in);
 
-        System.out.println("Sea bienvenido/a al Conversor de conversor.modelos.Moneda =]\n");
+        System.out.println("Sea bienvenido/a al Conversor de Monedas =]\n");
         while(true) {
             // Imprimo el menu y tomo el valor
             try{
+                // Primera moneda.
+                int error = 0;
+                int opcion;
                 menu.imprimirMenu();
-                System.out.println("Ingrese la moneda de referencia: ");
-                int opcion = entrada.nextInt();
+                System.out.println("7) Salir");
+                System.out.println("\n********************************");
+                do {
+                    if (error == 0){
+                        System.out.println("Ingrese la moneda a la que desea pasar: ");
+                        opcion = entrada.nextInt();
+                        error = 1;
+                    }else{
+                        System.out.println("Opcion no valida.");
+                        System.out.println("Ingrese nuevamente la moneda: ");
+                        opcion  = entrada.nextInt();
+                    }
+
+                }while(opcion < 1 || opcion > 7);
 
                 if (opcion == 7) {
                     break;
@@ -29,9 +44,23 @@ public class Main {
 
                 Moneda moneda = consulta.buscarMoneda(id);
 
+                // Segunda moneda.
+                error = 0;
                 menu.imprimirMenu();
-                System.out.println("Ingrese la moneda a la que desea pasar: ");
-                opcion = entrada.nextInt();
+                System.out.println("\n********************************");
+                do {
+                    if (error == 0){
+                        System.out.println("Ingrese la moneda a la que desea pasar: ");
+                        opcion = entrada.nextInt();
+                        error = 1;
+                    }else{
+                        System.out.println("Opcion no valida.");
+                        System.out.println("Ingrese nuevamente la moneda: ");
+                        opcion  = entrada.nextInt();
+                    }
+
+                }while(opcion < 1 || opcion > 6);
+
                 id = buscarId.buscarId(opcion);
 
                 System.out.println("1 " + moneda.base_code() + " equivale a " + moneda.conversion_rates().get(id) + " " + id);
