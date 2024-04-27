@@ -1,7 +1,4 @@
-import conversor.modelos.ConsultarMoneda;
-import conversor.modelos.IdDeMoneda;
-import conversor.modelos.Menus;
-import conversor.modelos.Moneda;
+import conversor.modelos.*;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -11,31 +8,14 @@ public class Main {
         Menus menu = new Menus();
         ConsultarMoneda consulta = new ConsultarMoneda();
         IdDeMoneda buscarId = new IdDeMoneda();
+        ElegirMoneda elegir = new ElegirMoneda();
         Scanner entrada = new Scanner(System.in);
 
         System.out.println("Sea bienvenido/a al Conversor de Monedas =]\n");
         while(true) {
-            // Imprimo el menu y tomo el valor
             try{
-                // Primera moneda.
-                int error = 0;
-                int opcion;
-                menu.imprimirMenu();
-                System.out.println("7) Salir");
-                System.out.println("\n********************************");
-                do {
-                    if (error == 0){
-                        System.out.println("Ingrese la moneda a la que desea pasar: ");
-                        opcion = entrada.nextInt();
-                        error = 1;
-                    }else{
-                        System.out.println("Opcion no valida.");
-                        System.out.println("Ingrese nuevamente la moneda: ");
-                        opcion  = entrada.nextInt();
-                    }
-
-                }while(opcion < 1 || opcion > 7);
-
+                // Primera moneda
+                int opcion = elegir.elegirMoneda();
                 if (opcion == 7) {
                     break;
                 }
@@ -45,21 +25,10 @@ public class Main {
                 Moneda moneda = consulta.buscarMoneda(id);
 
                 // Segunda moneda.
-                error = 0;
-                menu.imprimirMenu();
-                System.out.println("\n********************************");
-                do {
-                    if (error == 0){
-                        System.out.println("Ingrese la moneda a la que desea pasar: ");
-                        opcion = entrada.nextInt();
-                        error = 1;
-                    }else{
-                        System.out.println("Opcion no valida.");
-                        System.out.println("Ingrese nuevamente la moneda: ");
-                        opcion  = entrada.nextInt();
-                    }
-
-                }while(opcion < 1 || opcion > 6);
+                opcion = elegir.elegirMoneda();
+                if (opcion == 7) {
+                    break;
+                }
 
                 id = buscarId.buscarId(opcion);
 
